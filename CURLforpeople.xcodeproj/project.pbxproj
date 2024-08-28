@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52FF6E062C7C1E0700901F22 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52FF6E052C7C1E0700901F22 /* main.cpp */; };
+		52FF6E0E2C7C202000901F22 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 52FF6E0D2C7C202000901F22 /* libcurl.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		52FF6E022C7C1E0700901F22 /* CURLforpeople */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CURLforpeople; sourceTree = BUILT_PRODUCTS_DIR; };
 		52FF6E052C7C1E0700901F22 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		52FF6E0D2C7C202000901F22 /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
+		52FF6E102C7C61BE00901F22 /* JSONbullShit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = JSONbullShit.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FF6E0E2C7C202000901F22 /* libcurl.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +47,7 @@
 			children = (
 				52FF6E042C7C1E0700901F22 /* CURLforpeople */,
 				52FF6E032C7C1E0700901F22 /* Products */,
+				52FF6E0C2C7C201500901F22 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +63,17 @@
 			isa = PBXGroup;
 			children = (
 				52FF6E052C7C1E0700901F22 /* main.cpp */,
+				52FF6E102C7C61BE00901F22 /* JSONbullShit.hpp */,
 			);
 			path = CURLforpeople;
+			sourceTree = "<group>";
+		};
+		52FF6E0C2C7C201500901F22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52FF6E0D2C7C202000901F22 /* libcurl.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
