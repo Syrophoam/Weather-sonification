@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52FF6E062C7C1E0700901F22 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52FF6E052C7C1E0700901F22 /* main.cpp */; };
+		52D0BA2E2C7F0E8E00198F05 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52D0BA2C2C7F0E8E00198F05 /* main.cpp */; };
 		52FF6E0E2C7C202000901F22 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 52FF6E0D2C7C202000901F22 /* libcurl.tbd */; };
 /* End PBXBuildFile section */
 
@@ -24,10 +24,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		52D0BA2B2C7F0E8E00198F05 /* JSONbullShit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JSONbullShit.hpp; sourceTree = "<group>"; };
+		52D0BA2C2C7F0E8E00198F05 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		52FF6E022C7C1E0700901F22 /* CURLforpeople */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CURLforpeople; sourceTree = BUILT_PRODUCTS_DIR; };
-		52FF6E052C7C1E0700901F22 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		52FF6E0D2C7C202000901F22 /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
-		52FF6E102C7C61BE00901F22 /* JSONbullShit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = JSONbullShit.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,10 +42,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52D0BA2D2C7F0E8E00198F05 /* WeatherSonification */ = {
+			isa = PBXGroup;
+			children = (
+				52D0BA2B2C7F0E8E00198F05 /* JSONbullShit.hpp */,
+				52D0BA2C2C7F0E8E00198F05 /* main.cpp */,
+			);
+			path = WeatherSonification;
+			sourceTree = "<group>";
+		};
 		52FF6DF92C7C1E0700901F22 = {
 			isa = PBXGroup;
 			children = (
-				52FF6E042C7C1E0700901F22 /* CURLforpeople */,
+				52D0BA2D2C7F0E8E00198F05 /* WeatherSonification */,
 				52FF6E032C7C1E0700901F22 /* Products */,
 				52FF6E0C2C7C201500901F22 /* Frameworks */,
 			);
@@ -57,15 +66,6 @@
 				52FF6E022C7C1E0700901F22 /* CURLforpeople */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		52FF6E042C7C1E0700901F22 /* CURLforpeople */ = {
-			isa = PBXGroup;
-			children = (
-				52FF6E052C7C1E0700901F22 /* main.cpp */,
-				52FF6E102C7C61BE00901F22 /* JSONbullShit.hpp */,
-			);
-			path = CURLforpeople;
 			sourceTree = "<group>";
 		};
 		52FF6E0C2C7C201500901F22 /* Frameworks */ = {
@@ -110,7 +110,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 52FF6DFD2C7C1E0700901F22 /* Build configuration list for PBXProject "CURLforpeople" */;
+			buildConfigurationList = 52FF6DFD2C7C1E0700901F22 /* Build configuration list for PBXProject "WeatherSonification" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -133,7 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52FF6E062C7C1E0700901F22 /* main.cpp in Sources */,
+				52D0BA2E2C7F0E8E00198F05 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +278,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		52FF6DFD2C7C1E0700901F22 /* Build configuration list for PBXProject "CURLforpeople" */ = {
+		52FF6DFD2C7C1E0700901F22 /* Build configuration list for PBXProject "WeatherSonification" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				52FF6E072C7C1E0700901F22 /* Debug */,
