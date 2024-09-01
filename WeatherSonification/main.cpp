@@ -3,11 +3,15 @@
 #include <array>
 #include <stdlib.h>
 #include <string.h>
+#include <chrono>
+#include <format>
+
 #include <curl/curl.h>
 
 #include "JSONbullShit.hpp"
 
 size_t dataSize = 0;
+
 
 // really confusing function i copied off the internet
 size_t CURLWriteFunction(void *ptr, size_t size, size_t nmemb, void* userData){
@@ -66,8 +70,15 @@ int main() {
 //Z: Indicates Coordinated Universal Time (UTC).)
     
     std::string time = "\"time\": {\"from\": ";
-    time += "\"2024-08-26T00:00:00Z\"";
     
+    time += "\"";
+    const auto now = std::chrono::system_clock::now();
+    time += std::format("{:%FT%H:%M:00Z}", now);
+    time += "\"";
+    // /\ gets current time, replace with \/ to input a time
+    
+    //time += "\"2024-08-26T00:00:00Z\"";
+      
     JSON += time;
     
     // change 5 to change how long between weather data
@@ -99,6 +110,15 @@ int main() {
         curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, &CURLWriteFunction);
         
         //giving CURL the api key
+        
+        //timeval now;
+        
+        
+        //int time = gettimeofday(&now, NULL);
+        
+        
+        
+        
         std::string key_header = "x-api-key: " + key;
         headers = curl_slist_append(headers, key_header.c_str());
         // telling CURL to use JSON
