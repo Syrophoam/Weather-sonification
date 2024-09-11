@@ -8,9 +8,13 @@
 
 #include <curl/curl.h>
 
+#include <fstream>
+#include <nlohmann/json.hpp>
+
 #include "JSONbullShit.hpp"
 
 size_t dataSize = 0;
+using json = nlohmann::json;
 
 
 // really confusing function i copied off the internet
@@ -73,6 +77,7 @@ int main() {
     
     time += "\"";
     const auto now = std::chrono::system_clock::now();
+    
     time += std::format("{:%FT%H:%M:00Z}", now);
     time += "\"";
     // /\ gets current time, replace with \/ to input a time
