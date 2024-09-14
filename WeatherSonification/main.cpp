@@ -5,17 +5,17 @@
 #include <string.h>
 #include <chrono>
 #include <format>
+#include <map>
 
 #include <curl/curl.h>
 
 #include <fstream>
 #include <nlohmann/json.hpp>
 
-#include "JSONbullShit.hpp"
+#define dayInSeconds 86400;
 
 size_t dataSize = 0;
 using json = nlohmann::json;
-
 
 // really confusing function i copied off the internet
 size_t CURLWriteFunction(void *ptr, size_t size, size_t nmemb, void* userData){
@@ -39,72 +39,41 @@ int main() {
     CURL *handle = curl_easy_init();
     struct curl_slist *headers = NULL;
     
+    json jsonReq = {};
+    std::map pos = std::map<std::string,float>{
+        {"lon",174.7842} , {"lat",-37.7935}
+    };
+    
+    json::array_t positionArray = {pos};
+    jsonReq["points"] = positionArray;
+    
+    json::array_t variables = {"wave.height","air.visibility"}; // variable list
+    jsonReq["variables"] = variables;
+    
+    const auto now = std::chrono::system_clock::now();
+    
+    std::string currentTime = std::format("{:%FT%H:%M:00Z}", now);
+    
+    
+    
+    std::map time = std::map<std::string, std::string>{
+        {"from",currentTime}, {"interval","1h"}
+    };
+    
+    jsonReq["time"] = time;
+    
+    int repeats = 0;
+    std::cout << "repeats" << std::endl;
+    std::cin >> repeats;
+    jsonReq["time"]["repeat"] = repeats; // repeats
+    
+    std::string jsonRequestString = jsonReq.dump();
+    
     // where the response from the api will go
     char* data=0;
     
     // my api key
     std::string key = "S14jxYHPDoXhtPwrvYRm9m";
-
-    // JSON is a text file format i just used a bunch of strings to "make" a JSON file
-    std::string begin = "{";
-    std::string JSON;
-    
-    JSON += begin;
-    
-    // you can change 2 and 5 to change where in the world the API is looking at
-    int lonLat[] = {2,5}; // make float
-    std::string position = parse(
-                                "\"points\": [{ \"lon\": %i, \"lat\": %i }],", lonLat);
-    JSON += position;
-    
-    // variables, put comma after each variable except last
-    
-    std::string variables = " \"variables\": [ ";
-    // variables like cloud coverage or tempurature
-    variables += " \"wave.height\", ";
-    variables += " \"wave.height.max\" ";
-    variables += "],";
-    
-    JSON += variables;
-
-    // time in ISO 8601 UTC 
-//(2024-08-26: Year, month, and day (in YYYY-MM-DD format).
-//T: Separator between date and time.
-//00:00:00: Hour, minute, and second (in HH:MM:SS format).
-//Z: Indicates Coordinated Universal Time (UTC).)
-    
-    std::string time = "\"time\": {\"from\": ";
-    
-    time += "\"";
-    const auto now = std::chrono::system_clock::now();
-    
-    time += std::format("{:%FT%H:%M:00Z}", now);
-    time += "\"";
-    // /\ gets current time, replace with \/ to input a time
-    
-    //time += "\"2024-08-26T00:00:00Z\"";
-      
-    JSON += time;
-    
-    // change 5 to change how long between weather data
-    int intervalInHours = 5;
-    std::string interval = ",\"interval\": \"";
-    interval += std::to_string(intervalInHours);
-    interval += "h\"";
-
-    JSON += interval;  // replace /\ and \/ with the parse function
-    
-    // how many time it checks the weather data
-    int repeats = 4;
-    std::string reps = ",\"repeat\":  ";
-    reps += std::to_string(repeats);
-    
-    JSON += reps;
-    JSON += interval;
-    
-    std::string end = "}}\0";
-    
-    JSON += end;
 
     if (handle) {
         CURLcode res;
@@ -113,16 +82,9 @@ int main() {
         // giving CURL the foncusing function
         curl_easy_setopt(handle, CURLOPT_WRITEDATA, &data);
         curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, &CURLWriteFunction);
-        
-        //giving CURL the api key
-        
+
         //timeval now;
-        
-        
         //int time = gettimeofday(&now, NULL);
-        
-        
-        
         
         std::string key_header = "x-api-key: " + key;
         headers = curl_slist_append(headers, key_header.c_str());
@@ -132,7 +94,7 @@ int main() {
         
         // sending the top two things to metservice
         curl_easy_setopt(handle, CURLOPT_HTTPHEADER, headers);
-        curl_easy_setopt(handle, CURLOPT_POSTFIELDS, JSON.c_str());
+        curl_easy_setopt(handle, CURLOPT_POSTFIELDS, jsonRequestString.c_str());
 
         // this actually does everything above
         res = curl_easy_perform(handle);
@@ -143,8 +105,20 @@ int main() {
     }
     // prints the weather data to terminal
     printf("Page data:\n\n%s\n", data);
-
+    
+    json jsonResponse = json::parse(data);
+    
+    json testParse = jsonResponse["variables"];
+    json waveHeight = testParse["wave.height"];
+    json waveHeightData = waveHeight["data"];
+    
+    waveHeightData[0];
+    
+    
+    
+    
     // gives memory back
     free(data);
+    
     return 0;
 }
