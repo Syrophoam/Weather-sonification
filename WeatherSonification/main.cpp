@@ -54,8 +54,6 @@ int main() {
     
     std::string currentTime = std::format("{:%FT%H:%M:00Z}", now);
     
-    
-    
     std::map time = std::map<std::string, std::string>{
         {"from",currentTime}, {"interval","1h"}
     };

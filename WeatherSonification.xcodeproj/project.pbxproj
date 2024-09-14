@@ -24,7 +24,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		527128B62C9164A7000E16A2 /* Input.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Input.json; sourceTree = "<group>"; };
 		52D0BA2C2C7F0E8E00198F05 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		52FF6E022C7C1E0700901F22 /* CURLforpeople */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CURLforpeople; sourceTree = BUILT_PRODUCTS_DIR; };
 		52FF6E0D2C7C202000901F22 /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
@@ -46,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				52D0BA2C2C7F0E8E00198F05 /* main.cpp */,
-				527128B62C9164A7000E16A2 /* Input.json */,
 			);
 			path = WeatherSonification;
 			sourceTree = "<group>";
