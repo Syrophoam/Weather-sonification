@@ -14,6 +14,8 @@
 
 #define dayInSeconds 86400;
 
+// if have time make informative promo using imac
+
 size_t dataSize = 0;
 using json = nlohmann::json;
 
